@@ -1,0 +1,20 @@
+img.card-img {
+    height: 300px;
+}
+
+
+a.btn.btn-primary {
+    background: #4721f0;
+    border: 1px solid #4721f0;
+}
+
+.container-fluid.container {
+    width: 96%;
+    margin: auto;
+    margin-top: 80px;
+}
+
+a.btn.btn-primary:focus, a.btn.btn-primary:hover{
+    outline:none;
+    background: #4721f0;
+}

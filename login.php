@@ -19,7 +19,7 @@ if($_REQUEST['email']){
 $sql = "SELECT * from userlogin where email='$email'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-// checks given password is correct or not with database
+
 if ($result->num_rows > 0) {
 if (($userPassword) == $row['password']){
 echo $row['userID'];

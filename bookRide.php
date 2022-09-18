@@ -12,7 +12,7 @@ if (!$conn) {
 }
 
 
-$sql = "SELECT * from rideDetails";
+$sql = "SELECT * from ridedetails";
 $result = mysqli_query($conn, $sql);
 
 $json = array();

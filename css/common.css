@@ -1,0 +1,57 @@
+a.navbar-brand {
+    color: #fff !important;
+}
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light {
+    background: rgb(55, 55, 61)  !important;
+}
+.btn a{
+    color: #fff !important;
+}
+a.nav-link {
+    color: #fff !important;
+}
+
+.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active {
+    color: rgb(55, 55, 61)  !important;
+    background: #fff;
+}
+
+.btn-outline-success {
+    color: white;
+    border: 1px solid white;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+}
+
+.container-fluid {
+    margin-top: 56px;
+}
+
+.cardlower {
+    width: 98%;
+    margin: auto;
+    margin-top: 30px;
+}
+
+span.navbar-text {
+    color: white !important;
+    margin-left: 120px;
+}
+
+footer#myFooter {
+    margin-top: 50px;
+}
+
+.carousel-caption.d-none.d-md-block {
+    background: #ffffff88;
+    color: rgb(0, 0, 0);
+}
+
+button.submit-btn:focus, button.submit-btn:hover{
+    outline:none;
+    background: rgb(55, 55, 61)x;
+}

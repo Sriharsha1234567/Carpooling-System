@@ -4,9 +4,9 @@ $username = "root";
 $password = "";
 $dbname = "carpoolschema";
 
-// Create database connection
+// Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-// Check connecting database connection
+// Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
