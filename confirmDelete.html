@@ -1,0 +1,169 @@
+<!doctype html>  
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title >Previous Rides</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/Footer-with-logo.css">
+      <link rel="stylesheet" href="css/common.css">
+      <link rel="stylesheet" href="css/list.css">
+      <style>
+         
+      </style>
+      <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+   </head>
+   <body>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="userHome.html">Maryville Car Pool</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="adminHome.html">Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="postRide.html">Post A Ride</a>
+              </li>
+              <li class="nav-item active">
+                      <a class="nav-link" href="adminPreviousRides.html" >Ride History<span class="sr-only">(current)</span></a>
+                
+              </li>
+              <li class="nav-item"> 
+                <a class="nav-link " href="aboutUS.html">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="dashboard.html">Dashboard</a>
+              </li>
+            </ul>
+            <a href="index.html"><span class="navbar-text">Signout</span> </a>
+          </div>
+        </nav>
+              <div class="container-fluid">
+                    <div class="container">
+                                    <div id="confirmDelete">
+
+                                  </div>
+
+                                </div>
+                            </div>
+                        
+                      </div>
+                      </div>
+                      <footer id="myFooter">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <h5>Get started</h5>
+                                 <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Sign up</a></li>
+               
+                                 </ul>
+                              </div>
+                              <div class="col-sm-3">
+                                 <h5>About us</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                 <h5>Support</h5>
+                              </div>
+                              <div class="col-sm-3 info">
+                                 <h5>Information</h5>
+                                 <p>Maryville Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="second-bar">
+                           <div class="container">
+                              <h2 class="logo"><a href="#"> Maryville Car Pool</a></h2>
+                              <div class="social-icons">
+                                 <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                 <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                 <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<script type="text/javascript">
+function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    vars[key] = value;
+    });
+return vars;
+}
+
+var bookingID = getUrlVars()["bookingID"];
+console.log(bookingID)
+var userID = window.localStorage.getItem('userID');
+
+
+$.ajax({
+    type: "POST",
+    data:{bookingID:bookingID},
+    url: "confirmDeleteObject.php",
+    dataType:"json",
+    success: function(response) {
+    //console.log(response);
+    var upcoming = '';
+      for (i = 0; i < response.length; i++) {
+      if(response[i].bookingStatus === "Booked"){
+      updateSeats = response[i].availableSeats + response[i].totalSeats;
+      upcoming +=  '<div class="card">'+ '<div class="card-header">' + '<h4 class="head_text">Would you really want to delete this ride with Booking ID:- '+bookingID+' </h4>'+
+      '<button type="button" id="yesButton" class="btn btn-success"><a href="deleteSuccess.html?bookingID='+response[i].bookingID+'" id="yesButton">YES</a></button>'+
+      '<button type="button" id="noButton" class="btn btn-danger"><a href = "adminPreviousRides.html">NO</a></button>'+
+      '</div>'+
+      '<div class="gaadiex-list">'+
+      '<div class="gaadiex-list-item"><img class="gaadiex-list-item-img" src="images/car.png" alt="List user">'+
+      '<div class="gaadiex-list-item-text">'+
+      '<h5>Driver Name :'+response[i].driverName+'</h5>'+
+      '<h5>Source :'+response[i].from+'</h5>'+
+      '<h5>Destination :'+response[i].to+'</h5>'+
+      '<div class="date_Section">'+
+      '<h6 class="checkdate">Departure Time : '+response[i].departureTime+'</h6>'+
+      '<h6 class="checkdate">Tentative Arrival Time: '+response[i].arrivalTime+'</h6>'+
+      '<h6 class="checkdate">Date of Journey: '+response[i].journeyDate+'</h6>'+
+      '</div>'+
+      '<h6 class="price"> Price : '+response[i].totalFare+' $</h6>'+
+      '<h6 class="price"> No of seats : '+response[i].totalSeats+'</h6>'+
+      '<h6 class="price"> Type of Car : '+response[i].carType+'</h6>'+
+      '</div>'+
+      '</div>'+
+      '</div>'+
+      '</div>'
+      }
+      }
+      $('#confirmDelete').html(upcoming);
+}
+});
+
+$("#yesButton").click(function(){
+    console.log("yes button clicked");
+//     $.ajax({
+//     type: "POST",
+//     data:{bookingID:bookingID},
+//     url: "confirmDeleteObject.php",
+//     dataType:"json",
+//     success: function(response) {
+//     console.log(response);
+//       var updateSeats = response[i].availableSeats + response[i].totalSeats;
+//     }
+// });
+console.log(updateSeats);
+
+});
+
+</script>
+        </body>
+    </html>

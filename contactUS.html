@@ -1,171 +1,204 @@
+<!doctype html>  
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title >Contact us</title>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="css/Footer-with-logo.css">
+      <link rel="stylesheet" href="css/common.css">
+      <style>
+         .container {
+            margin-top: 80px;
+        }
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"><html>
-    <head>
-        <style>
-          body {font-family: Arial, Helvetica, sans-serif;}
-          * {box-sizing: border-box;}
-          
-          input[type=text], select, textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            margin-top: 6px;
-            margin-bottom: 16px;
-            resize: vertical;
-          }
-          
-          input[type=submit] {
-            background-color: #04AA6D;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-          }
-          
-          input[type=submit]:hover {
-            background-color: #45a049;
-          }
-          
-          .container {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
-          }
-          </style>
-            <meta charset="utf-8">
-            <meta name="description" content="">
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <title >Home</title>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-            <link rel="stylesheet" href="css/Footer-with-logo.css">
-            <link rel="stylesheet" href="css/common.css">
-            <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-      </head>
-      <body> 
-      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Car Pooling System</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        button.btn.btn-danger {
+            background: #0062cc;
+            border: 1px solid #0062cc;
+        }
+
+        section#contact {
+            padding-bottom: 12px !important;
+            background: #f8f9faa6 !important;
+        }
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="userHome.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="bookRide.html">Book Your Ride</a>
-            </li>
-            <li class="nav-item">
-                    <a class="nav-link " href="previousRides.html">Ride History</a>
-              
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="aboutUs.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link " href="#">Contact Us <span class="sr-only">(current)</span></a>
-            </li>
-          </ul>
-          <a href="index.html"><span class="navbar-text">Logout</span> </a>
-        </div>
-      </nav>
-              <section class="m_contact m_py-5 m_bg-light" id="m_contact">
-                     <div class="m_container">
-                         <div class="m_row">
-                             <div class="m_col-md-12">
-                                 <h4>We always Strive for your Safety. If you have any issues do contact us.</h4>
-                                 <hr>
-                             </div>
-                             
-                             <div class="m_col-md-6">
-                                 <div class="m_card" id="m_contactInfo">
-                                  <div class="container">
-                                    <form action="/action_page.php">
-                                      <label for="fname">First Name</label>
-                                      <input type="text" id="fname" name="firstname" placeholder="Your name..">
-                                  
-                                      <label for="lname">Last Name</label>
-                                      <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-                                  
-                                      <label for="country">Country</label>
-                                      <select id="country" name="country">
-                                        <option value="australia">Australia</option>
-                                        <option value="canada">Canada</option>
-                                        <option value="usa">USA</option>
-                                      </select>
-                                  
-                                      <label for="subject">Subject</label>
-                                      <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
-                                  
-                                      <input type="submit" value="Submit">
-                                    </form>
-                                  </div>
-                                 </div>
-                             </div>
- 
-                             <div class="m_col-md-6">
-                                     <div class="m_address">
-                                         
-                                     <h5>Walk In Here:</h5>
-                                     <ul class="m_list-unstyled">
-                                         <li> Office Location</li>
-                                         <li>Northwest missouri</li>
-                                         <li> Maryville, MO - 64468</li>
-                                     </ul>
-                                     
-                                     </div>
-                                     <div class="m_email">
-                                     <h5>Mailto:</h5>
-                                     <ul class="m_list-unstyled">
-                                         <li> <a href="mailto:support.carpooling@gmail.com" target="_blank" rel="noreferrer">support.carpooling@gmail.com</a></li>
-                                         
-                                     </ul>
-                                     </div>
-                                     <div class="m_phone">
-                                         <h5>Mobile:</h5>
-                                         <ul class="m_list-unstyled">
-                                         <li> +1-6605285164</li>
-                                     </ul>
-                                     </div>
-                                     <hr>
-                                     
-                                 </div>
-                         </div>  
-                     </div>
-              </section>
+      </style>
+      <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+   </head>
+   <body>
+      <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+          <a class="navbar-brand" href="userHome.html">Maryville Car Pool</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="userHome.html">Home </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="bookRide.html">Book Your Ride</a>
+              </li>
+              <li class="nav-item">
+                      <a class="nav-link " href="previousRides.html">Ride History</a>
+                
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="aboutUs.html">About Us</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link " href="contactUS.html">Contact Us<span class="sr-only">(current)</span></a>
+              </li>
+            </ul>
+            <a href="index.html"><span class="navbar-text">Signout</span> </a>
+          </div>
+        </nav>
+              <section class="contact py-5 bg-light" id="contact">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4>We always Strive for your Safety. If you have any issues do contact us.</h4>
+                                <hr>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <div class="card" id = "contactInfo">
+                                    <div class="card-body">
+                                         <form>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                  <input id="Full Name" name="Full Name" placeholder="Full Name" class="form-control" type="text">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                  <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                                                </div>
+                                              </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <input id="Mobile No." name="Mobile No." placeholder="Mobile No." class="form-control" required="required" type="text">
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                          
+                                                          <select id="inputState" class="form-control">
+                                                            <option selected>Choose ...</option>
+                                                            <option> Query</option>
+                                                            <option> Complaint</option>
+                                                            <option> Feedback</option>
+                                                          </select>
+                                                </div>
+                                                <div class="form-group col-md-12">
+                                                          <textarea id="comment" name="comment" cols="40" rows="5" placeholder="Your Message"class="form-control"></textarea>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="form-row">
+                                                <button type="button" id="submit" class="btn btn-info">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
 
-                     <footer id="myFooter">
-                      <div class="container">
-                         <div class="row">
-                            <div class="col-sm-3">
-                               <h5>Get started</h5>
-                               <ul>
-                                  <li><a href="userHome.html">Home</a></li>
-                               </ul>
+                                <div class="card" id = "contactSuccessInfo">
+                                  <div class="card-body">
+                                       <form>
+                                          <div class="form-row">
+                                              <div class="form-group">
+                                              <h4>Your Response has been submitted succesfully. Our team will contact you shortly.</h4>
+                                              </div>
+                                              
+                                            </div>
+                                          
+                                          
+                                          <div class="form-row">
+                                              <button type="button" id="submitAgain" class="btn btn-info">Submit Another Response</button>
+                                          </div>
+                                      </form>
+                                  </div>
+                              </div>
+
                             </div>
-                            <div class="col-sm-3 info">
-                               <h5>Information</h5>
-                               <p>Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="second-bar">
-                         <div class="container">
-                            <h2 class="logo"><a href="#"> Maryville Car Pool</a></h2>
-                            <div class="social-icons">
-                               <a href="https://twitter.com/" class="twitter"><i class="fa fa-twitter"></i></a>
-                               <a href="https://facebook.com/" class="facebook"><i class="fa fa-facebook"></i></a>
-                               <a href="https://google.com/" class="google"><i class="fa fa-google-plus"></i></a>
-                            </div>
-                         </div>
-                      </div>
-                   </footer>
-     </body>
-</html>
+
+                            <div class="col-md-6">
+                                    <div class="address">
+                                        
+                                    <h5>Walk In Here:</h5>
+                                    <ul class="list-unstyled">
+                                        <li>Project Team</li>
+                                        <li>1115 North college Drive</li>
+                                        <li> Maryville, MO - 64468</li>
+                                    </ul>
+                                    
+                                    </div>
+                                    <div class="email">
+                                    <h5>Mailto:</h5>
+                                    <ul class="list-unstyled">
+                                        <li>projectTeam@gmail.com</li>
+                                        
+                                    </ul>
+                                    </div>
+                                    <div class="phone">
+                                        <h5>Mobile:</h5>
+                                        <ul class="list-unstyled">
+                                        <li> +1-1234567890</li>
+                                    </ul>
+                                    </div>
+                                    <hr>
+                                    
+                                </div>
+                        </div>
+                        
+                        
+                    </div>
+                    </section>
+                    <footer id="myFooter">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-sm-3">
+                                 <h5>Get started</h5>
+                                 <ul>
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Sign up</a></li>
+               
+                                 </ul>
+                              </div>
+                              <div class="col-sm-3">
+                                 <h5>About us</h5>
+                              </div>
+                              <div class="col-sm-3">
+                                 <h5>Support</h5>
+                              </div>
+                              <div class="col-sm-3 info">
+                                 <h5>Information</h5>
+                                 <p>Maryville Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="second-bar">
+                           <div class="container">
+                              <h2 class="logo"><a href="#"> Maryville Car Pool</a></h2>
+                              <div class="social-icons">
+                                 <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                                 <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                                 <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </footer>
+                     <script>
+                      $('#contactSuccessInfo').hide();
+                      $('#submit').click(function(){
+                        $('#contactInfo').hide();
+                        $('#contactSuccessInfo').show();
+                      });
+                      $('#submitAgain').click(function(){
+                        $('#contactInfo').show();
+                        $('#contactSuccessInfo').hide();
+                      });
+                      </script>
+                    </body>
+                    </html>
