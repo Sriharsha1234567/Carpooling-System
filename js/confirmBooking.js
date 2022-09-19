@@ -54,11 +54,12 @@ function init() {
             $("#contactNumber").html(result.contactNumber);
             $("#availableSeats").html(result.availableSeats);
             $("#price").html(result.fare);
-            
+            $("#totalPrice").html(result.fare+"$ this ride");
+
             window.localStorage.setItem('rideID', result.rideID);
 
             //This is used to calculate the total fare of the ride.
-            var totalPrice = 0;
+            var totalPrice = parseInt(result.fare);
             $('#selectNoOfSeats').click(function(){
             totalPrice = 0;
             var noofSeats = $(this).val();

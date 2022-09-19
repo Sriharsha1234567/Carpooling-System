@@ -22,7 +22,7 @@ $row = mysqli_fetch_assoc($result);
 
 if ($result->num_rows > 0) {
 if (($userPassword) == $row['password']){
-echo $row['userID'];
+echo $row['email'];
 }
 else{
     echo "0";
