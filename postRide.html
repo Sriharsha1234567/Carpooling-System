@@ -21,7 +21,7 @@
    </head>
    <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="user.html">Car Pooling System</a>
+                <a class="navbar-brand" href="adminHome.html">Car Pooling System</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,9 +38,9 @@
                             <a class="nav-link " href="adminPreviousRides.html">Ride History</a>
                       
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                       <a class="nav-link " href="aboutUS.html">About Us</a>
-                    </li>
+                    </li> -->
                     <li class="nav-item">
                       <a class="nav-link " href="dashboard.html">Dashboard</a>
                     </li>
@@ -132,7 +132,7 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input class="form-control" id="departureTime" type="text" required>
+                                                        <input class="form-control" id="departureTime" type="time" required>
                                                         <span class="form-label">Departure Time</span>
                                                         <div class="valid-feedback">
                                                             Looks good!
@@ -144,7 +144,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input class="form-control" id="arrivalTime" type="text" required>
+                                                        <input class="form-control" id="arrivalTime" type="time" required>
                                                         <span class="form-label">Arrival Time </span>
                                                         <div class="valid-feedback">
                                                             Looks good!
@@ -205,7 +205,7 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input class="form-control" id="contactNumber" type="tel" pattern="^([0-9]{6}[\s\-]{1}[0-9]{12}|[0-9]{18})$" required>
+                                                        <input class="form-control" id="contactNumber" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                                         <span class="form-label">Contact Number</span>
                                                         <div class="valid-feedback">
                                                             Looks good!
