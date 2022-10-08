@@ -66,10 +66,11 @@
                                                     <div class="form-group">
                                                         <input class="form-control" id = "from" type="text" pattern="[a-zA-Z]*( [a-zA-Z]*)?" required>
                                                         <span class="form-label">From</span>
-                                                        <div class="valid-feedback">
+                                                        <span style="color: red;" id="fromWarning"></span>
+                                                        <div id="valid-feedback_from">
                                                             Looks good!
                                                            </div>
-                                                           <div class="invalid-feedback">
+                                                           <div id="invalid-feedback_from">
                                                              Please provide valid source
                                                            </div>
                                                     </div>
@@ -92,7 +93,6 @@
                                                     <div class="form-group">
                                                         <span class="form-label">Select Car Type</span>
                                                         <select id = "carType" class="form-control">
-                                                            <option>select</option>
                                                             <option>Basic Car</option>
                                                             <option>Luxury Car</option>
                                                             <option>Premium Car</option>
@@ -104,7 +104,6 @@
                                                     <div class="form-group">
                                                         <span class="form-label">Available Seats</span>
                                                         <select id = "seats" class="form-control">
-                                                            <option>select</option>
                                                             <option>1</option>
                                                             <option>2</option>
                                                             <option>3</option>
@@ -115,18 +114,6 @@
                                                         <span class="select-arrow"></span>
                                                     </div>
                                                 </div>
-                                                <!-- <div class="col-md-3 col-sm-6">
-                                                    <div class="form-group">
-                                                        <span class="form-label">Guests</span>
-                                                        <select class="form-control">
-                                                            <option>select</option>
-                                                            <option>1 Person</option>
-                                                            <option>2 People</option>
-                                                            <option>3 People</option>
-                                                        </select>
-                                                        <span class="select-arrow"></span>
-                                                    </div>
-                                                </div> -->
                                             </div>
                                             
                                             <div class="row">
@@ -205,13 +192,13 @@
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <input class="form-control" id="contactNumber" type="tel" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
-                                                        <span class="form-label">Contact Number</span>
+                                                        <input class="form-control" id="contactNumber" type="text" pattern="[a-zA-Z]*( [a-zA-Z]*)?" required>
+                                                        <span class="form-label">Driver Email</span>
                                                         <div class="valid-feedback">
                                                             Looks good!
                                                            </div>
                                                            <div class="invalid-feedback">
-                                                             Please provide valid contact number
+                                                             Please provide valid Email
                                                            </div>
 
                                                     </div>
@@ -224,29 +211,28 @@
                                     </div>
                                 </div>
 
-                                <div  id = "successData" class="col-md-7 col-md-offset-1">
-                                                <div class="card-body">
-                                                     <form>
-                                                        <div class="form-row">
-                                                            <div class="form-group">
-                                                            <h4>Your have successfully created a Ride. Now you ride is available to users.</h4>
-                                                            </div>
-                                                            
-                                                          </div>
-                                                        
-                                                        
-                                                        <div class="form-row">
-                                                            <button type="button" id="postAgain" class="btn btn-info">Post Another Ride</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                </div>
+<div  id = "successData" class="col-md-7 col-md-offset-1">
+    <div class="card-body">
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <h4>Your have successfully created a Ride. Now you ride is available to users.</h4>
+                </div>                                                
+            </div>                                            
+            <div class="form-row">
+                <button type="button" id="postAgain" class="btn btn-info">Post Another Ride</button>
+            </div>
+        </form>
+    </div>
+</div>
 
                             </div>
                         </div>
                     </div>
                 </div>
-                 <footer id="myFooter">
+                
+<!-- Footer starts here -->
+                <footer id="myFooter">
                     <div class="container">
                        <div class="row">
                           <div class="col-sm-3">
@@ -279,10 +265,15 @@
                           </div>
                        </div>
                     </div>
-                 </footer>
-                    <script>
-                            $('#successData').hide();
+                </footer>
 
+<!-- Script starts here -->
+<script>
+$('#valid-feedback_from').hide();
+$('#invalid-feedback_from').hide();
+$('#fromWarning').hide();
+
+                            $('#successData').hide();
                             $('.form-control').each(function () {
                                 floatedLabel($(this));
                             });
@@ -301,10 +292,7 @@
                             }
 
                             $('#bookButton').click(function(){
-                            $('#successData').show();
-                            $('#formData').hide();
                             var from = $('#from').val();
-
                             var to = $('#to').val();
                             var carType = $('#carType').val();
                             var seats = $('#seats').val();
@@ -314,27 +302,46 @@
                             var journeyDate = $('#journeyDate').val();
                             var driverName = $('#driverName').val();
                             var contactNumber = $('#contactNumber').val();
-                            if(from != "" && to!= "" && carType!= "" && seats!= "" && departureTime!= "" && arrivalTime!= "" &&
-                            price!="" && journeyDate!= "" && driverName!="" && contactNumber!=""){
-                                $.ajax({
-        type:'POST',
-        data:{from:from,to:to,carType:carType,seats:seats,departureTime:departureTime,arrivalTime:arrivalTime,
-            price:price,journeyDate:journeyDate,driverName:driverName,contactNumber:contactNumber},
-        url:"postRide.php",
-        success:function(output){
-            alert(output);
-        }
-        });
-                            }
-                            //alert(seats);
                             
+                            if(contactNumber != "" ){
+                            $.ajax({
+                            type: "POST",
+                            data:{email:contactNumber},
+                            url: "checkUserByID.php",
+                            success: function(response) {
+                            if(response==0 || response == "Admin"){
+                            alert("Invalid Driver Email. Please check correctly");
+                            }
+                            }
+                            });
+                            }
+
+                            if(from != "" && to!= "" && carType!= "" && seats!= "" && departureTime!= "" && arrivalTime!= "" &&
+                            price!="" && journeyDate!= "" && driverName!="" && contactNumber!=""){ 
+                                $.ajax({
+                                type:'POST',
+                                data:{from:from,to:to,carType:carType,seats:seats,departureTime:departureTime,arrivalTime:arrivalTime,
+                                price:price,journeyDate:journeyDate,driverName:driverName,contactNumber:contactNumber},
+                                url:"postRide.php",
+                                success:function(output){
+                                    alert(output)
+                                    if (output ==0) {
+                                        alert("Invalid Credentials");
+                                    } else {
+                                    alert("Your ride has been posted sucessfully.");
+                                    }
+                                }
+                                });
+                            } else {
+                                alert("Incorrect Data. Please fill all fields correctly")
+                            }
                             });
                             
                             $('#postAgain').click(function(){
                                 $('#successData').hide();
-            $('#formData').show();
+                                $('#formData').show();
                             });
-                        </script>
+</script>
                 
               </body>
               </html>

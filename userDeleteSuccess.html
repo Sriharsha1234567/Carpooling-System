@@ -106,7 +106,7 @@ return vars;
 
 var bookingID = getUrlVars()["bookingID"];
 console.log(bookingID)
-var userID = window.localStorage.getItem('userID');
+var userID = window.sessionStorage.getItem('userID');
 
 
 $.ajax({

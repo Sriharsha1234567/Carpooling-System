@@ -19,9 +19,9 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception; 
 
 // Include library files 
-require 'C:\xampp\htdocs\PHPMailer\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\PHPMailer\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\Exception.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
 
 if($_REQUEST['changeEmail']){
   $changeEmail = $_REQUEST['changeEmail'];

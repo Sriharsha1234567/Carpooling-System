@@ -25,6 +25,7 @@ require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
 
 if($_REQUEST['email']){
     $email = $_REQUEST['email'];
+    $otp = $_REQUEST['OTP'];
 }
 
 if($email != "") {
@@ -33,7 +34,6 @@ if($email != "") {
   $row = mysqli_fetch_assoc($result);
   $fetch_user_name=$row['email'];
   $email_id=$row['email'];
-  $password=$row['password'];
 
 if($email==$fetch_user_name) {
 
@@ -63,11 +63,11 @@ $mail->addAddress($email_id);
 $mail->isHTML(true); 
  
 // Mail subject 
-$mail->Subject = 'Your Old Password'; 
+$mail->Subject = 'OTP'; 
  
 // Mail body content 
-$bodyContent = '<h1>Please find your old password below</h1>'; 
-$bodyContent .= '<p>Your Old Password is: <b>'.$password.'</b></p>'; 
+$bodyContent = '<h1>Please find your OTP below which is valid for 15 mins.</h1>'; 
+$bodyContent .= '<p>Your Old Password is: <b>'.$otp.'</b></p>'; 
 $mail->Body    = $bodyContent; 
  
 // Send email 

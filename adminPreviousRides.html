@@ -122,7 +122,7 @@ $('#upcomingRide').show();
 $('#previousRide').hide();
 $('#cancelledRide').hide();
 
-var userID = window.localStorage.getItem('userID');
+var userID = window.sessionStorage.getItem('userID');
 console.log(userID)
 $.ajax({
     type: "POST",

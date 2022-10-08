@@ -41,6 +41,7 @@
                 <a class="nav-link " href="contactUS.html">Contact Us</a>
               </li>
             </ul>
+            <input type="text" id="myInput" onChange="searchFunc()" placeholder="Search for rides..">
             <a href="index.html"><span class="navbar-text">Signout</span> </a>
           </div>
         </nav>
@@ -91,5 +92,61 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script src="js/bookRide.js"></script>
+<script>
+
+   function searchFunc() {
+  // Declare variables
+  var rideDetails = JSON.parse(window.sessionStorage.getItem("RideDetails"));
+  console.log("Inside Search Func");
+  console.log("The Ride Details are",rideDetails);
+
+  var searchList = '';
+  var input, filter;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  var image=[];
+
+  console.log(filter);
+
+  for (i = 0; i < rideDetails.length; i++) {
+        if(rideDetails[i].carType === "Basic Car"){
+          image.push("images/basic.jpg")
+          }
+          else if(rideDetails[i].carType === "Premium Car"){
+            image.push("images/premium.jpg")
+          }
+          else if(rideDetails[i].carType === "Luxury Car"){
+            image.push("images/luxury.jpg")
+          }
+          else{
+            image.push("images/basic.jpg")
+          }
+   }
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < rideDetails.length; i++) {
+   console.log(rideDetails[i].from.toUpperCase());
+    if (rideDetails[i].from.toUpperCase().search(filter) > -1) {
+      searchList +=  '<div class="card col-md-3" >'+ '<img class="card-img-top" src="'+image[i]+'"  alt="Card image cap">'+
+        '<div class="card-body">'+
+          '<h5 class="card-title">'+rideDetails[i].carType+'</h5>'+
+          '<p class="card-text">'+'<b>From: </b>'+rideDetails[i].from+'</p>'+
+          '<p class="card-text">'+'<b>To: </b>'+rideDetails[i].to+'</p>'+
+          '<p class="card-text">'+'<b>Departure Time: </b>'+rideDetails[i].departureTime+'</p>'+
+          '<p class="card-text">'+'<b>Arrival Time: </b>'+rideDetails[i].arrivalTime+'</p>'+
+          '<p class="card-text">'+'<b>Journey Date: </b>'+rideDetails[i].journeyDate+'</p>'+
+          '</div>'+
+          '<a href = "confirmBooking.html?carId='+rideDetails[i].rideID+'" id = "bookACar" value="'+rideDetails[i].rideID+'" class="btn btn-info">'+"Book"+'</a>'+
+        '</div>' + '</div>';  
+      console.log("Inside IF condition",searchList)
+    } else {
+      searchList += "";
+    }
+  }
+
+  $("#getRideDetails").html(searchList);
+
+}
+</script>
         </body>
     </html>

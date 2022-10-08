@@ -63,7 +63,6 @@
                                         <button type="button" id="cancelledRideButton" class="btn btn-danger cancelledBtn">Cancelled Rides</button>
                                             </div>  
                       </div>
-
                                     <div id="upcomingRide">
                                   </div>
 
@@ -122,7 +121,7 @@ $('#upcomingRide').show();
 $('#previousRide').hide();
 $('#cancelledRide').hide();
 
-var userID = window.localStorage.getItem('userID');
+var userID = window.sessionStorage.getItem('userID');
 console.log(userID)
 $.ajax({
     type: "POST",

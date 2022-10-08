@@ -20,7 +20,7 @@ $contact = $_REQUEST['contact'];
 $city = $_REQUEST['city'];
 }
 
-$sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isAdmin)VALUES('$name','$password','$email','$contact','$city',0) ";
+$sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isUserActive)VALUES('$name','$password','$email','$contact','$city',true) ";
 
 if($conn->query($sql) == TRUE){
     echo "New User Created Succesfully";
@@ -28,16 +28,6 @@ if($conn->query($sql) == TRUE){
 else{
     echo "Error in Creating an User" ;
 }
-// $result = mysqli_query($conn, $sql);
-// echo($result);
-// if (mysqli_num_rows($result) > 0) {
-//     // output data of each row
-//     while($row = mysqli_fetch_assoc($result)) {
-//         echo "id: " . $row["userID"]. " - Name: " . $row["name"]. " - email ".$row["email"] . "<br>";
-//     }
-// } else {
-//     echo "0 results";
-// }
 
 mysqli_close($conn);
 ?>

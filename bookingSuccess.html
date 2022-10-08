@@ -225,7 +225,7 @@
                     </div>
     
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                        <span class="label-input100">Contact Number: </span>
+                        <span class="label-input100">Driver Contact: </span>
                         <span class="input100" id = "contactNumber"> </span>
                         <span class="focus-input100"></span>
                     </div>
@@ -302,9 +302,9 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script>
 //it gets the whole booked object from previous page.
-var data = window.localStorage.getItem('Booked');
-var userID = window.localStorage.getItem('userID');
-var rideID = window.localStorage.getItem('rideID');
+var data = window.sessionStorage.getItem('Booked');
+var userID = window.sessionStorage.getItem('userID');
+var rideID = window.sessionStorage.getItem('rideID');
 var main = JSON.parse(data);
 console.log(main.length);
 console.log(main[0])
@@ -331,8 +331,6 @@ $.ajax({
         success:function(output){
         }
 });
-
-
 
 
 //Below displays the data in the confirm booking page.
