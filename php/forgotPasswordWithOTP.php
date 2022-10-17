@@ -32,10 +32,18 @@ if($email != "") {
   $sql = "SELECT * from userlogin where email='$email'";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
+<<<<<<< HEAD
 
 if ($result->num_rows > 0) {
 $fetch_user_name=$row['email'];
 if($email==$fetch_user_name) {
+=======
+  $fetch_user_name=$row['email'];
+  $email_id=$row['email'];
+
+if($email==$fetch_user_name) {
+
+>>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
 // Create an instance; Pass `true` to enable exceptions 
 $mail = new PHPMailer(TRUE); 
  
@@ -44,16 +52,28 @@ $mail->SMTPDebug = SMTP::DEBUG_SERVER;    //Enable verbose debug output
 $mail->isSMTP();                            // Set mailer to use SMTP 
 $mail->Host = 'smtp.gmail.com';           // Specify main and backup SMTP servers 
 $mail->SMTPAuth = true;                     // Enable SMTP authentication 
+<<<<<<< HEAD
 $mail->Username = 'carpooling.nwmsu@gmail.com';       // SMTP username 
 $mail->Password = 'yebhomkyliwpaupe';         // SMTP password 
+=======
+$mail->Username = 'carpoolingteam22@gmail.com';       // SMTP username 
+$mail->Password = 'wrehttwoprtprrwk';         // SMTP password 
+>>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
 $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted 
 $mail->Port = 587;                         // TCP port to connect to 
  
 // Sender info 
+<<<<<<< HEAD
 $mail->setFrom('carpooling.nwmsu@gmail.com', 'Password Team'); 
  
 // Add a recipient 
 $mail->addAddress($email); 
+=======
+$mail->setFrom('carpoolingteam22@gmail.com', 'Password Team'); 
+ 
+// Add a recipient 
+$mail->addAddress($email_id); 
+>>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
  
 //$mail->addCC('cc@example.com'); 
 //$mail->addBCC('bcc@example.com'); 
@@ -75,6 +95,7 @@ if(!$mail->send()) {
 } else { 
     echo 'Message has been sent.'; 
 }
+<<<<<<< HEAD
 } 
 }else {
   echo "0";
@@ -82,6 +103,13 @@ if(!$mail->send()) {
 } 
 else{
   echo "0";
+=======
+
+}
+} 
+else{
+  echo '0';
+>>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
 }
 
 mysqli_close($conn);

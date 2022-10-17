@@ -47,13 +47,22 @@ $mail->SMTPDebug = SMTP::DEBUG_SERVER;    //Enable verbose debug output
 $mail->isSMTP();                            // Set mailer to use SMTP 
 $mail->Host = 'smtp.gmail.com';           // Specify main and backup SMTP servers 
 $mail->SMTPAuth = true;                     // Enable SMTP authentication 
+<<<<<<< HEAD
 $mail->Username = 'carpooling.nwmsu@gmail.com';       // SMTP username 
 $mail->Password = 'yebhomkyliwpaupe';         // SMTP password 
+=======
+$mail->Username = 'carpoolingteam22@gmail.com';       // SMTP username 
+$mail->Password = 'wrehttwoprtprrwk';         // SMTP password 
+>>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
 $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted 
 $mail->Port = 587;                         // TCP port to connect to 
  
 // Sender info 
+<<<<<<< HEAD
 $mail->setFrom('carpooling.nwmsu@gmail.com', 'Rides Team'); 
+=======
+$mail->setFrom('carpoolingteam22@gmail.com', 'Rides Team'); 
+>>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
  
 // Add a recipient 
 $mail->addAddress($contactNumber); 
