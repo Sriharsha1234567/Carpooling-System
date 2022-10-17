@@ -11,7 +11,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT * from bookedRideDetails brd,rideDetails rd, userlogin ul where brd.rideID = rd.rideID AND brd.userID = ul.userID ";
+$sql = "SELECT * from bookedRideDetails brd,rideDetails rd, userlogin ul where brd.rideID = rd.rideID AND brd.userID = ul.email";
 $result = mysqli_query($conn, $sql);
 
 $json = array();

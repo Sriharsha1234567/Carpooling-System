@@ -1,5 +1,5 @@
 
-//var data = window.localStorage.getItem('Book');
+//var data = window.sessionStorage.getItem('Book');
 //var main = JSON.parse(data);
 
 init();
@@ -51,12 +51,12 @@ function init() {
             $('#selectNoOfSeats').html(selectList);
             $("#getRideDetails").html(tempList);
             $("#driverName").html(result.driverName);
-            $("#contactNumber").html(result.contactNumber);
+            $("#contactNumber").html(result.driverEmail);
             $("#availableSeats").html(result.availableSeats);
             $("#price").html(result.fare);
             $("#totalPrice").html(result.fare+"$ this ride");
 
-            window.localStorage.setItem('rideID', result.rideID);
+            window.sessionStorage.setItem('rideID', result.rideID);
 
             //This is used to calculate the total fare of the ride.
             var totalPrice = parseInt(result.fare);
@@ -79,12 +79,12 @@ function init() {
             
             console.log("inside the confirm button");
             bookedRideDetails.push({bookedCarType:result.carType,bookedFrom:result.from,bookedTo:result.to,bookedCarImage:image[0],
-            bookedTotalPrice:totalPrice,seats:result.availableSeats,bookedTotalSeats:$('#selectNoOfSeats').val(),bookedDriverContactNumber:result.contactNumber,
+            bookedTotalPrice:totalPrice,seats:result.availableSeats,bookedTotalSeats:$('#selectNoOfSeats').val(),bookedDriverContactNumber:result.driverEmail,
             bookedDeparture:result.departureTime,bookedArrival:result.arrivalTime,bookedJourneyDate:result.journeyDate,bookedDriverName:result.driverName});
-            window.localStorage.setItem('Booked', JSON.stringify(bookedRideDetails));
+            window.sessionStorage.setItem('Booked', JSON.stringify(bookedRideDetails));
             var remainingSeats = result.availableSeats - $('#selectNoOfSeats').val();
-            console.log(bookedRideDetails)
             console.log(remainingSeats);
+            console.log(result.rideID);
             $.ajax({
               type:"POST",
               url:"updateSeats.php",
@@ -169,7 +169,7 @@ return vars;
 // bookedDeparture:result.Departure,bookedArrival:result.Arrival,bookedJourneyDate:result.journeyDate,bookedDriverName:result.driverName});
 
 // console.log(bookedRideDetails)
-// window.localStorage.setItem('Booked', JSON.stringify(bookedRideDetails));
+// window.sessionStorage.setItem('Booked', JSON.stringify(bookedRideDetails));
 // window.location.href = "bookingSuccess.html";
 // });
 

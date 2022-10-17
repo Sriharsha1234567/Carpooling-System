@@ -126,14 +126,14 @@
                     </div>
                     <div class="col-md-9 register-right">
                         <!-- Nav tabs -->
-                        <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+                        <!-- <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">User</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Admin</a>
                             </li>
-                        </ul>
+                        </ul> -->
                         <!-- User Login -->
                         <div class="tab-content" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -158,7 +158,7 @@
                                 </div>
                             </div>
                             <!-- Admin Login -->
-                            <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                            <!-- <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <h3  class="register-heading">ADMIN LOGIN</h3>
                                 <div class="row register-form">
                                     <div class="col-md-3"></div>
@@ -175,7 +175,7 @@
                                     <div class="col-md-3">
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -189,6 +189,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script>
 sessionStorage.clear()
+
 $('#homeBack').click(function(){
         window.location.href = "homePage.html";
 });
@@ -221,19 +222,30 @@ function myFunction() {
 $('#login').click(function(){
 var email = $('#email').val();
 var password = $('#password').val();
-if(email != "" && password != ""){
+
+if(email != "" && password != "" && email === "carpoolingteam" && password === "bearcat"){
+        window.sessionStorage.setItem('adminID',(email));
+        window.location.href = "adminHome.html";
+} else if(email != "" && password != ""){
         $.ajax({
               type: "POST",
               data:{email:email,password:password},
               url: "login.php",
               success: function(response) {
                 //alert(response);
-                  if(response==0 || response == "Admin"){
+                  if(response==0){
                     alert("Invalid Credentials");
-                  }
-                  else{
+                  } else if (response == "Admin") {
+                    window.sessionStorage.setItem('adminID',(email));
+                    window.location.href = "adminHome.html";
+                  } else if (response == "User"){
                     window.sessionStorage.setItem('userID',(email));
                     window.location.href = "userHome.html";
+                  } else if(response == "UserDriver"){
+                    window.sessionStorage.setItem('userID',(email));
+                    window.location.href = "user.html";
+                } else {
+                    alert("Invalid Credentials");
                   }
               }
         });
@@ -249,23 +261,24 @@ alert("invalid credentials")
 }
 });
 
-$('#adminLogin').click(function(){
-var email = $('#adminUser').val();
-var password = $('#adminPassword').val();
-if(email === "bearcat" && password === "bearcat"){
-                    window.location.href = "adminHome.html";
+// $('#adminLogin').click(function(){
+// var email = $('#adminUser').val();
+// var password = $('#adminPassword').val();
+// if(email === "bearcat" && password === "bearcat"){
+//                     window.sessionStorage.setItem('adminID',(email));
+//                     window.location.href = "adminHome.html";
         
-}
-else if(email === ""){
-$('#emailWarning').html("Email is mandatory");
-}
-else if(password === ""){
-$('#passwordWarning').html("password is mandatory");
-}
-else{
-alert("invalid credentials")
-}
-});
+// }
+// else if(email === ""){
+// $('#emailWarning').html("Email is mandatory");
+// }
+// else if(password === ""){
+// $('#passwordWarning').html("password is mandatory");
+// }
+// else{
+// alert("invalid credentials")
+// }
+// });
 
 
 $('#register').click(function(){

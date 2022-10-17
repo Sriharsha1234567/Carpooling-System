@@ -48,52 +48,44 @@
               </nav>
               <div class="container">
                     <div class="table-wrapper">
+                        <br><br><br>
                         <div class="table-title">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <h2>Manage <b>Users</b></h2>
                                 </div>
                                 <div class="col-sm-6">
-                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Users</span></a>
-                                                    
+                                    <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New Users</span></a>                   
                                 </div>
                             </div>
                         </div>
                         <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
-                                    
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>State</th>
                                     <th>Phone</th>
-                                    <th>Actions</th>
+                                    <th>isAdmin</th>
+                                    <th>isUserActive</th>
+                                    <th>isUserDriver</th>
+                                    <th>Edit</th>
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody id="userTableDetails">
-                                <!-- <tr>
-                                    
-                                    <td>Thomas Hardy</td>
-                                    <td>thomashardy@mail.com</td>
-                                    <td>89 Chiaroscuro Rd, Portland, USA</td>
-                                    <td>(171) 555-2222</td>
-                                    <td>
-                                        <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                        <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                    </td>
-                                </tr> -->
                                  
                             </tbody>
                         </table>
-                        
+
                 </div>
-                <!-- Edit Modal HTML -->
+                <!-- Add Modal HTML -->
                 <div id="addEmployeeModal" class="modal fade">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">						
-                                    <h4 class="modal-title">Add Employee</h4>
+                                    <h4 class="modal-title">Add User</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">					
@@ -106,17 +98,30 @@
                                         <input type="email" class="form-control" required>
                                     </div>
                                     <div class="form-group">
-                                        <label>Address</label>
-                                        <textarea class="form-control" required></textarea>
+                                        <label>State</label>
+                                        <input class="form-control" required></input>
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
                                         <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>isAdmin</label>
+                                        <input type="number" class="form-control" min="0" max="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>isUserActive</label>
+                                        <input type="number" class="form-control" min="0" max="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>isUserDriver</label>
+                                        <input type="number" class="form-control" min="0" max="1" required>
                                     </div>					
                                 </div>
+                                <h6 class = "text-warning">Note:- 0 indicates inactive and 1 indicates active state.</h6>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-success" value="Add">
+                                    <input type="submit" class="btn btn-success" id="createUser" value="Add">
                                 </div>
                             </form>
                         </div>
@@ -128,30 +133,43 @@
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">						
-                                    <h4 class="modal-title">Edit Employee</h4>
+                                    <h4 class="modal-title">Edit User</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">					
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" id="editName" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" required>
+                                        <input type="email" id="editEmail" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>state</label>
-                                        <textarea class="form-control" required></textarea>
+                                        <input type="text" id="editState" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="text" class="form-control" required>
-                                    </div>					
+                                        <input type="text" id="editPhone" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>isAdmin</label>
+                                        <input type="number" id="editAdmin" class="form-control" min="0" max="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>isUserActive</label>
+                                        <input type="number" id="editUserActive" class="form-control" min="0" max="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>isUserDriver</label>
+                                        <input type="number" id="editUserDriver" class="form-control" min="0" max="1" required>
+                                    </div>						
                                 </div>
+                                <h6 class = "text-warning">Note:- 0 indicates inactive and 1 indicates active state.</h6>
                                 <div class="modal-footer">
                                     <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
-                                    <input type="submit" class="btn btn-info" value="Save">
+                                    <input type="submit" class="btn btn-info" id="editUser" value="Save">
                                 </div>
                             </form>
                         </div>
@@ -163,11 +181,12 @@
                         <div class="modal-content">
                             <form>
                                 <div class="modal-header">						
-                                    <h4 class="modal-title">Delete Employee</h4>
+                                    <h4 class="modal-title">Delete User</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                 </div>
                                 <div class="modal-body">					
-                                    <p>Are you sure you want to delete these Records?</p>
+                                    <p>Are you sure you want to delete below user?</p>
+                                    <p id="deleteUserID"></p>
                                     <p class="text-warning"><small>This action cannot be undone.</small></p>
                                 </div>
                                 <div class="modal-footer">
@@ -198,7 +217,7 @@
                         </div>
                         <div class="col-sm-3 info">
                            <h5>Information</h5>
-                           <p>Maryville Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
+                           <p> Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
                         </div>
                      </div>
                   </div>
@@ -215,12 +234,41 @@
                </footer>
 
 <script type="text/javascript">
-                $(document).ready(function(){
+
+function  getId(element) {
+    var userDetails = JSON.parse(window.sessionStorage.getItem("UserDetailsList"));
+    var tableRow = element.closest('tr').rowIndex;
+    document.getElementById("editName").value = userDetails[tableRow-1].name;
+    document.getElementById("editEmail").value = userDetails[tableRow-1].email;
+    document.getElementById("editState").value = userDetails[tableRow-1].city;
+    document.getElementById("editPhone").value = userDetails[tableRow-1].contact;
+    document.getElementById("editAdmin").value = userDetails[tableRow-1].isAdmin;
+    document.getElementById("editUserActive").value = userDetails[tableRow-1].isuserActive;
+    document.getElementById("editUserDriver").value = userDetails[tableRow-1].isuserDriver;
+}
+
+function  getDeleteId(element) {
+    var userDetails = JSON.parse(window.sessionStorage.getItem("UserDetailsList"));
+    var tableRow = element.closest('tr').rowIndex;
+    document.getElementById("deleteUserID").innerHTML = userDetails[tableRow-1].email;
+}
+
+</script>
+
+<script type="text/javascript">
+    var userLoggedIn = window.sessionStorage.getItem('adminID');
+    console.log(userLoggedIn);
+    if(userLoggedIn === "" || !userLoggedIn) {
+        window.location.href = "index.html";
+    }
+
+    $(document).ready(function(){
     $.ajax({
     type: "POST",
     url: "userList.php",
     dataType:"json",
     success: function(response) {
+        window.sessionStorage.setItem("UserDetailsList", JSON.stringify(response));
         var tempList = '';
         for (i = 0; i < response.length; i++) {
         tempList +=     '<tr>'+
@@ -228,27 +276,74 @@
                                     '<td>'+response[i].email+'</td>'+
                                     '<td>'+response[i].city+'</td>'+
                                     '<td>'+response[i].contact+'</td>'+
+                                    '<td>'+response[i].isAdmin+'</td>'+
+                                    '<td>'+response[i].isuserActive+'</td>'+
+                                    '<td>'+response[i].isuserDriver+'</td>'+
                                     '<td>'+
-                                        '<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'+
+                                        '<a href="#editEmployeeModal" class="edit" data-toggle="modal" onclick="getId(this)"><i class="material-icons" data-toggle="tooltip" title="Edit">Edit</i></a>'+
                                     '</td>'+
-                                '</tr>'
+                                    '<td>'+
+                                        '<a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="getDeleteId(this)"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>'+
+                                    '</td>'+
+                        '</tr>'
         }
 $('#userTableDetails').html(tempList);
     }
 });
 
+// $('#editEmployeeModal').on('click', function(e){
+// var id = $(e.target).closest('tr').find(".id").html();
+// console.log("Getting the row ID",id)
+// });
 
+$('#editUser').click(function(){
+    var name = document.getElementById("editName").value;
+    var email = document.getElementById("editEmail").value;
+    var state = document.getElementById("editState").value;
+    var phone = document.getElementById("editPhone").value;
+    var admin = document.getElementById("editAdmin").value;
+    var user = document.getElementById("editUserActive").value;
+    var driver = document.getElementById("editUserDriver").value;
+
+    var userDetails = JSON.parse(window.sessionStorage.getItem("UserDetailsList"));
+    var getUserDetail;
+    for (i = 0; i < userDetails.length; i++) {
+        if (userDetails[i].email === email) {
+            getUserDetail = userDetails[i];
+        }
+    }
+    if (getUserDetail === undefined) {
+        alert("You are trying to change your Email. In this case please delete the user and try to add user again with new Email. You are not allowed to changes user's Email address.")
+    } else {
+    if (name != getUserDetail.name || state != getUserDetail.city || phone != getUserDetail.contact || admin != getUserDetail.isAdmin || user != isuserActive || driver != isuserDriver) {
+    alert(email);
+    $.ajax({
+    type: "POST",
+    data:{userID:email,name:name,contact:phone,city:state,isAdmin:admin,isuserActive:user,isuserDriver:driver},
+    url: "updateUser.php",
+    success: function(response) {
+        alert(response)
+        location.reload();
+    }
+    });
+    } else {
+        alert("Nothing to Update")
+    }
+    }   
+});
 
 $("#deleteTheUser").click(function(){
-    //console.log(userID)
-$.ajax({
+    var deleteUserEmail = document.getElementById("deleteUserID").innerHTML;
+    alert(deleteUserEmail);
+    $.ajax({
     type: "POST",
-    data:{userID:11},
+    data:{userID:deleteUserEmail},
     url: "deleteUser.php",
     success: function(response) {
         alert(response)
+        location.reload();
     }
-});
+    });
 });
 
 

@@ -63,7 +63,6 @@
                                         <button type="button" id="cancelledRideButton" class="btn btn-danger cancelledBtn">Cancelled Rides</button>
                                             </div>  
                       </div>
-
                                     <div id="upcomingRide">
                                   </div>
 
@@ -117,12 +116,17 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script type="text/javascript">
+    var userLoggedIn = window.sessionStorage.getItem('userID');
+    console.log(userLoggedIn);
+    if(userLoggedIn === "" || !userLoggedIn) {
+      window.location.href = "index.html";
+    }
 //Intitial set of values
 $('#upcomingRide').show();
 $('#previousRide').hide();
 $('#cancelledRide').hide();
 
-var userID = window.localStorage.getItem('userID');
+var userID = window.sessionStorage.getItem('userID');
 console.log(userID)
 $.ajax({
     type: "POST",

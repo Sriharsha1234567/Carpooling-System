@@ -181,9 +181,10 @@
         data:{name:name,password:password,email:email,contact:phone,city:state},
         url:"registerUser.php",
         success:function(output){
-            alert("User Registered Succesfully");
+            console.log(output)
         }
         });
+        alert("User Registered Succesfully");
         window.location.href = "index.html";
         }
         else{

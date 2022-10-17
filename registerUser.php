@@ -20,24 +20,66 @@ $contact = $_REQUEST['contact'];
 $city = $_REQUEST['city'];
 }
 
-$sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isAdmin)VALUES('$name','$password','$email','$contact','$city',0) ";
+// Import PHPMailer classes into the global namespace 
+use PHPMailer\PHPMailer\PHPMailer; 
+use PHPMailer\PHPMailer\SMTP; 
+use PHPMailer\PHPMailer\Exception; 
+
+// Include library files 
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\Exception.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
+
+$sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isuserActive)VALUES('$name','$password','$email','$contact','$city',0)";
 
 if($conn->query($sql) == TRUE){
-    echo "New User Created Succesfully";
+// Create an instance; Pass `true` to enable exceptions 
+echo "New User Created Succesfully";
+
+$mail = new PHPMailer(TRUE); 
+ 
+// Server settings 
+$mail->SMTPDebug = SMTP::DEBUG_SERVER;    //Enable verbose debug output 
+$mail->isSMTP();                            // Set mailer to use SMTP 
+$mail->Host = 'smtp.gmail.com';           // Specify main and backup SMTP servers 
+$mail->SMTPAuth = true;                     // Enable SMTP authentication 
+$mail->Username = 'carpooling.nwmsu@gmail.com';       // SMTP username 
+$mail->Password = 'yebhomkyliwpaupe';         // SMTP password 
+$mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted 
+$mail->Port = 587;                         // TCP port to connect to 
+ 
+// Sender info 
+$mail->setFrom('carpooling.nwmsu@gmail.com', 'Onboarding Team'); 
+ 
+// Add a recipient 
+$mail->addAddress($email); 
+ 
+//$mail->addCC('cc@example.com'); 
+//$mail->addBCC('bcc@example.com'); 
+ 
+// Set email format to HTML 
+$mail->isHTML(true); 
+ 
+// Mail subject 
+$mail->Subject = 'Welcome To Our Application'; 
+ 
+// Mail body content 
+$bodyContent = '<h1>Hello <b>'.$name.'</b>. You have successfuly registered with the below Email address to our portal</h1>'; 
+$bodyContent .= '<p>Your Email is: <b>'.$email.'</b></p>';
+$bodyContent .= '<p>Someone from our team would review your application and get back to you shortly. </p>';  
+$mail->Body    = $bodyContent; 
+ 
+// Send email 
+if(!$mail->send()) { 
+    echo 'Message could not be sent. Mailer Error: '.$mail->ErrorInfo; 
+} else { 
+    echo 'Message has been sent.'; 
 }
-else{
+
+
+} else{
     echo "Error in Creating an User" ;
 }
-// $result = mysqli_query($conn, $sql);
-// echo($result);
-// if (mysqli_num_rows($result) > 0) {
-//     // output data of each row
-//     while($row = mysqli_fetch_assoc($result)) {
-//         echo "id: " . $row["userID"]. " - Name: " . $row["name"]. " - email ".$row["email"] . "<br>";
-//     }
-// } else {
-//     echo "0 results";
-// }
 
 mysqli_close($conn);
 ?>
