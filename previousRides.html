@@ -146,6 +146,7 @@ $.ajax({
       if((d.getDate()<=d1.getDate())){
       upcoming +=  '<div class="card">'+ '<div class="card-header">' + '<h4 class="head_text">Upcoming Ride -  '+response[i].bookingID+' </h4>'+
       '<button type="button" id="cancelButtonClicked" class="btn btn-danger"><a href = "userConfirmDelete.html?bookingID='+response[i].bookingID+'">Cancel</a></button>'+
+      '<button type="button" id="chatButtonClicked" class="btn btn-success"><a href = "http://localhost/Carpooling-System/chat/chat.php?driverID='+response[i].driverEmail+'">Chat</a></button>'+
       '</div>'+
       '<div class="gaadiex-list">'+
       '<div class="gaadiex-list-item"><img class="gaadiex-list-item-img" src="images/car.png" alt="List user">'+
@@ -174,7 +175,7 @@ $.ajax({
       '<div class="gaadiex-list-item"><img class="gaadiex-list-item-img" src="images/car.png" alt="List user">'+
       '<div class="gaadiex-list-item-text">'+
       '<h5>Driver Name :'+response[i].driverName+'</h5>'+
-      '<h5>Source :'+response[i].from+'</h5>'+
+      '<h5>Source :'+response[i].from+'</h5>'+ 
       '<h5>Destination :'+response[i].to+' Omaha</h5>'+
       '<div class="date_Section">'+
       '<h6 class="checkdate">Departure Time : '+response[i].departureTime+'</h6>'+

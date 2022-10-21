@@ -26,11 +26,7 @@ if (($userPassword) == $row['password'] && $row['isuserActive'] == 1){
         echo "Admin";
     } else if ($row['isAdmin'] == 0) {
         echo "User";
-<<<<<<< HEAD
     } else if ($row['isuserDriver'] == 1) {
-=======
-    } else if ($row['isuserDriver'] == 0) {
->>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
         echo "UserDriver";   
     }
 }

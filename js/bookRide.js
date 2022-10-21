@@ -28,20 +28,11 @@ function init() {
             image.push("images/basic.jpg")
           }
       }
-<<<<<<< HEAD
-
-      for (i = 0; i < response.length; i++) {
-        console.log(response[i]); 
-        var d1 = new Date(response[i].journeyDate);
-
-=======
       var userId = window.sessionStorage.getItem("userID");
       console.log(userId);
       for (i = 0; i < response.length; i++) {
         //console.log(response[i]); 
         var d1 = new Date(response[i].journeyDate);
-        console.log(response[i].driverEmail);
->>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
         if((d.getDate()<=d1.getDate()) && response[i].availableSeats>0 && response[i].driverEmail != userId){
         dataClick.push(response[i].id);
         updatedRide.push(response[i])

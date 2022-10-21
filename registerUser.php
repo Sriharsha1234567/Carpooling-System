@@ -20,7 +20,6 @@ $contact = $_REQUEST['contact'];
 $city = $_REQUEST['city'];
 }
 
-<<<<<<< HEAD
 // Import PHPMailer classes into the global namespace 
 use PHPMailer\PHPMailer\PHPMailer; 
 use PHPMailer\PHPMailer\SMTP; 
@@ -32,9 +31,6 @@ require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\PHPMailer.php';
 require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
 
 $sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isuserActive)VALUES('$name','$password','$email','$contact','$city',0)";
-=======
-$sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isUserActive)VALUES('$name','$password','$email','$contact','$city',true) ";
->>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
 
 if($conn->query($sql) == TRUE){
 // Create an instance; Pass `true` to enable exceptions 

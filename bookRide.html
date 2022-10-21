@@ -100,17 +100,9 @@
 </script>
 <script src="js/bookRide.js"></script>
 <script>
-<<<<<<< HEAD
-   var rideDetails = JSON.parse(window.sessionStorage.getItem("RideDetails"));
-
   function searchFunc() {
+var rideDetails = JSON.parse(window.sessionStorage.getItem("RideDetails"));
   // Declare variables
-=======
-
-   function searchFunc() {
-  // Declare variables
-  var rideDetails = JSON.parse(window.sessionStorage.getItem("RideDetails"));
->>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
   console.log("Inside Search Func");
   console.log("The Ride Details are",rideDetails);
 
@@ -140,11 +132,7 @@
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < rideDetails.length; i++) {
    console.log(rideDetails[i].from.toUpperCase());
-<<<<<<< HEAD
    if ((rideDetails[i].from.toUpperCase().search(filter) > -1) || (rideDetails[i].carType.toUpperCase().search(filter) > -1)) {
-=======
-    if (rideDetails[i].from.toUpperCase().search(filter) > -1) {
->>>>>>> e798e886258239deea118fa0b5634e9e262c4ac6
       searchList +=  '<div class="card col-md-3" >'+ '<img class="card-img-top" src="'+image[i]+'"  alt="Card image cap">'+
         '<div class="card-body">'+
           '<h5 class="card-title">'+rideDetails[i].carType+'</h5>'+
@@ -166,5 +154,5 @@
 
 }
 </script>
-        </body>
-    </html>
+</body>
+</html>
