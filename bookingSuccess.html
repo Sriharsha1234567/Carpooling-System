@@ -225,7 +225,7 @@
                     </div>
     
                     <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-                        <span class="label-input100">Contact Number: </span>
+                        <span class="label-input100">Driver Contact: </span>
                         <span class="input100" id = "contactNumber"> </span>
                         <span class="focus-input100"></span>
                     </div>
@@ -302,11 +302,16 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script>
 //it gets the whole booked object from previous page.
-var data = window.localStorage.getItem('Booked');
-var userID = window.localStorage.getItem('userID');
-var rideID = window.localStorage.getItem('rideID');
+var userLoggedIn = window.sessionStorage.getItem('userID');
+    console.log(userLoggedIn);
+    if(userLoggedIn === "" || !userLoggedIn) {
+        window.location.href = "index.html";
+}
+
+var data = window.sessionStorage.getItem('Booked');
+var userID = window.sessionStorage.getItem('userID');
+var rideID = window.sessionStorage.getItem('rideID');
 var main = JSON.parse(data);
-console.log(main.length);
 console.log(main[0])
 console.log(userID);
 console.log(rideID);
@@ -326,13 +331,11 @@ var bookingID = makeid(6);
 
 $.ajax({
         type:'POST',
-        data:{rideID:rideID,userID:userID,totalSeats:main[0].bookedTotalSeats,totalPrice:main[0].bookedTotalPrice,bookingID:bookingID},
+        data:{rideID:rideID,userID:userID,totalSeats:main[0].bookedTotalSeats,totalPrice:main[0].bookedTotalPrice,bookingID:bookingID,driverEmail:main[0].driverEmail,userEmail:userID},
         url:"bookedRideDetails.php",
         success:function(output){
         }
 });
-
-
 
 
 //Below displays the data in the confirm booking page.

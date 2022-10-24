@@ -17,6 +17,7 @@ $remainingSeats = $_REQUEST['remainingSeats'];
 }
 
 $sql1 = "UPDATE ridedetails SET availableSeats='$remainingSeats' WHERE rideID='$rideID'";
+
 if(mysqli_query($connn, $sql1)){
     echo "seats were updated successfully.";
 } else {

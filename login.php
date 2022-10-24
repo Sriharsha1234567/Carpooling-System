@@ -21,8 +21,14 @@ $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 
 if ($result->num_rows > 0) {
-if (($userPassword) == $row['password']){
-echo $row['email'];
+if (($userPassword) == $row['password'] && $row['isuserActive'] == 1){
+    if($row['isAdmin'] == 1) {
+        echo "Admin";
+    } else if ($row['isAdmin'] == 0) {
+        echo "User";
+    } else if ($row['isuserDriver'] == 1) {
+        echo "UserDriver";   
+    }
 }
 else{
     echo "0";
@@ -31,15 +37,6 @@ else{
 else {
     echo "0";
 }
-
-// if (mysqli_num_rows($result) > 0) {
-//     // output data of each row
-//     while($row = mysqli_fetch_assoc($result)) {
-//         echo "id: " . $row["userID"]. " - Name: " . $row["name"]. " - email ".$row["email"] . "<br>";
-//     }
-// } else {
-//     echo "0 results";
-// }
 
 mysqli_close($conn);
 ?>

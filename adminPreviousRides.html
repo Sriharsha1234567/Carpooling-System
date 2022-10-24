@@ -122,8 +122,12 @@ $('#upcomingRide').show();
 $('#previousRide').hide();
 $('#cancelledRide').hide();
 
-var userID = window.localStorage.getItem('userID');
-console.log(userID)
+var userLoggedIn = window.sessionStorage.getItem('adminID');
+    console.log(userLoggedIn);
+    if(userLoggedIn === "" || !userLoggedIn) {
+        window.location.href = "index.html";
+}
+
 $.ajax({
     type: "POST",
     url: "adminPreviousRides.php",

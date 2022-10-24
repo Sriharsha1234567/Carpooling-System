@@ -190,6 +190,12 @@
                         </div>
                      </footer>
                      <script>
+                          var userLoggedIn = window.sessionStorage.getItem('userID');
+    console.log(userLoggedIn);
+    if(userLoggedIn === "" || !userLoggedIn) {
+      window.location.href = "index.html";
+    }
+    
                       $('#contactSuccessInfo').hide();
                       $('#submit').click(function(){
                         $('#contactInfo').hide();

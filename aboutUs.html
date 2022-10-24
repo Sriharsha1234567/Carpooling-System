@@ -12,11 +12,18 @@
       <link rel="stylesheet" href="css/common.css">
       <link rel="stylesheet" href="css/about.css">
       <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+      <script>
+             var userLoggedIn = window.sessionStorage.getItem('userID');
+    console.log(userLoggedIn);
+    if(userLoggedIn === "" || !userLoggedIn) {
+      window.location.href = "index.html";
+    }
+      </script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
    </head>
    <body>
         <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="userHome.html">Maryville Car Pool</a>
+                <a class="navbar-brand" href="userHome.html">Car Pooling System</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
                 </button>
@@ -49,7 +56,7 @@
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                         <div class="page-caption">
-                                            <h1 class="page-title">Maryville Car Pool</h1>
+                                            <h1 class="page-title">Car Pooling System</h1>
                                         </div>
                                     </div>
                                 </div>
@@ -64,11 +71,11 @@
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                             <!-- section-title -->
                                             <div class="section-title mb-0">
-                                                <h2>Maryville Car Pool System. Book Your car to anywhere in Kansas and Missouri states</h2>
+                                                <h2>Car Pooling System. Book Your car to anywhere in Kansas and Missouri states</h2>
                                                 <p class="desc">Maryville Car Pooling System provides various rides to different locations in Kansas 
                                                     and Missouri State with numerous car range types. The cars are brand new and we always provide safe Journey 
                                                 Destination. We provide very less fares to your destination and you can compare with any other business available in 
-                                            Maryville market.</p>
+                                             market.</p>
                                             </div>
                                             <!-- /.section-title -->
                                         </div>
@@ -96,13 +103,13 @@
                                           </div>
                                           <div class="col-sm-3 info">
                                              <h5>Information</h5>
-                                             <p>Maryville Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
+                                             <p>Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
                                           </div>
                                        </div>
                                     </div>
                                     <div class="second-bar">
                                        <div class="container">
-                                          <h2 class="logo"><a href="#"> Maryville Car Pool</a></h2>
+                                          <h2 class="logo"><a href="#"> Car Pooling System</a></h2>
                                           <div class="social-icons">
                                              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                                              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>

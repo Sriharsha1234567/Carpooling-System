@@ -25,18 +25,17 @@ require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
 
 if($_REQUEST['email']){
     $email = $_REQUEST['email'];
+    $otp = $_REQUEST['OTP'];
 }
 
 if($email != "") {
   $sql = "SELECT * from userlogin where email='$email'";
   $result = mysqli_query($conn, $sql);
   $row = mysqli_fetch_assoc($result);
-  $fetch_user_name=$row['email'];
-  $email_id=$row['email'];
-  $password=$row['password'];
 
+if ($result->num_rows > 0) {
+$fetch_user_name=$row['email'];
 if($email==$fetch_user_name) {
-
 // Create an instance; Pass `true` to enable exceptions 
 $mail = new PHPMailer(TRUE); 
  
@@ -54,7 +53,7 @@ $mail->Port = 587;                         // TCP port to connect to
 $mail->setFrom('carpooling.nwmsu@gmail.com', 'Password Team'); 
  
 // Add a recipient 
-$mail->addAddress($email_id); 
+$mail->addAddress($email); 
  
 //$mail->addCC('cc@example.com'); 
 //$mail->addBCC('bcc@example.com'); 
@@ -63,11 +62,11 @@ $mail->addAddress($email_id);
 $mail->isHTML(true); 
  
 // Mail subject 
-$mail->Subject = 'Your Old Password'; 
+$mail->Subject = 'OTP'; 
  
 // Mail body content 
-$bodyContent = '<h1>Please find your old password below</h1>'; 
-$bodyContent .= '<p>Your Old Password is: <b>'.$password.'</b></p>'; 
+$bodyContent = '<h1>Please find your OTP below which is valid for 15 mins.</h1>'; 
+$bodyContent .= '<p>Your Old Password is: <b>'.$otp.'</b></p>'; 
 $mail->Body    = $bodyContent; 
  
 // Send email 
@@ -76,11 +75,13 @@ if(!$mail->send()) {
 } else { 
     echo 'Message has been sent.'; 
 }
-
+} 
+}else {
+  echo "0";
 }
 } 
 else{
-  echo '0';
+  echo "0";
 }
 
 mysqli_close($conn);

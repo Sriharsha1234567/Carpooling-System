@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ued_database";
+$dbname = "carpoolschema";
 
 // Create connection
 $connn = mysqli_connect($servername, $username, $password, $dbname);
@@ -15,7 +15,7 @@ if($_REQUEST['userID']){
 $userID = $_REQUEST['userID'];
 }
 
-$sql1 = "DELETE FROM userlogin WHERE userID = 12";
+$sql1 = "DELETE FROM userlogin WHERE email = '$userID'";
 if(mysqli_query($connn, $sql1)){
   echo "successful";
 } 

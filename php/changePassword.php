@@ -19,9 +19,9 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception; 
 
 // Include library files 
-require 'C:\xampp\htdocs\PHPMailer\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\PHPMailer\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\Exception.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
 
 if($_REQUEST['changeEmail']){
   $changeEmail = $_REQUEST['changeEmail'];
@@ -42,13 +42,13 @@ $mail->SMTPDebug = SMTP::DEBUG_SERVER;    //Enable verbose debug output
 $mail->isSMTP();                            // Set mailer to use SMTP 
 $mail->Host = 'smtp.gmail.com';           // Specify main and backup SMTP servers 
 $mail->SMTPAuth = true;                     // Enable SMTP authentication 
-$mail->Username = 'carpoolingteam22@gmail.com';       // SMTP username 
-$mail->Password = 'wrehttwoprtprrwk';         // SMTP password 
+$mail->Username = 'carpooling.nwmsu@gmail.com';       // SMTP username 
+$mail->Password = 'yebhomkyliwpaupe';         // SMTP password 
 $mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted 
 $mail->Port = 587;                         // TCP port to connect to 
  
 // Sender info 
-$mail->setFrom('carpoolingteam22@gmail.com', 'Password Team'); 
+$mail->setFrom('carpooling.nwmsu@gmail.com', 'Password Team'); 
  
 // Add a recipient 
 $mail->addAddress($changeEmail); 

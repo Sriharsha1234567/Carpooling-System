@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "ued_database";
+$dbname = "carpoolschema";
 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
@@ -10,7 +10,6 @@ $conn = mysqli_connect($servername, $username, $password, $dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
 
 $sql = "SELECT * from userlogin";
 $result = mysqli_query($conn, $sql);
