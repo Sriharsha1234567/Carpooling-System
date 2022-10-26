@@ -13,7 +13,6 @@
       <link rel="stylesheet" href="css/common.css">
       <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
       <script>
-
     var userLoggedIn = window.sessionStorage.getItem('userID');
     console.log(userLoggedIn);
     if(userLoggedIn === "" || !userLoggedIn) {
@@ -39,7 +38,9 @@
                     </li>
                     <li class="nav-item">
                             <a class="nav-link " href="previousRides.html">Ride History</a>
-                      
+                    </li>
+                    <li class="nav-item" id="postARide">
+                      <a class="nav-link" href="postRideUser.html">Post A Ride</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link " href="aboutUs.html">About Us</a>
@@ -160,5 +161,14 @@
                      </div>
                   </div>
                </footer>
+
+               <script>
+    $('#postARide').hide();           
+    var isDriver = window.sessionStorage.getItem('isDriver');
+    console.log(isDriver);
+    if(isDriver === "true") {
+      $('#postARide').show();
+    }
+               </script>
        </body>
 </html>

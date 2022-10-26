@@ -34,6 +34,9 @@
                       <a class="nav-link " href="previousRides.html">Ride History</a>
                 
               </li>
+              <li class="nav-item" id="postARide">
+                <a class="nav-link" href="postRideUser.html">Post A Ride</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link " href="aboutUs.html">About Us</a>
               </li>
@@ -92,7 +95,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 <script>
-      var userLoggedIn = window.sessionStorage.getItem('userID');
+    var userLoggedIn = window.sessionStorage.getItem('userID');
     console.log(userLoggedIn);
     if(userLoggedIn === "" || !userLoggedIn) {
       window.location.href = "index.html";
@@ -100,7 +103,15 @@
 </script>
 <script src="js/bookRide.js"></script>
 <script>
-  function searchFunc() {
+
+$('#postARide').hide();           
+    var isDriver = window.sessionStorage.getItem('isDriver');
+    console.log(isDriver);
+    if(isDriver === "true") {
+      $('#postARide').show();
+    }
+    
+function searchFunc() {
 var rideDetails = JSON.parse(window.sessionStorage.getItem("RideDetails"));
   // Declare variables
   console.log("Inside Search Func");

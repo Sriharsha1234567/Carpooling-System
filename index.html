@@ -243,7 +243,8 @@ if(email != "" && password != "" && email === "carpoolingteam" && password === "
                     window.location.href = "userHome.html";
                   } else if(response == "UserDriver"){
                     window.sessionStorage.setItem('userID',(email));
-                    window.location.href = "user.html";
+                    window.sessionStorage.setItem('isDriver',true);
+                    window.location.href = "userHome.html";
                 } else {
                     alert("Invalid Credentials");
                   }

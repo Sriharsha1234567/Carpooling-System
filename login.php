@@ -24,9 +24,9 @@ if ($result->num_rows > 0) {
 if (($userPassword) == $row['password'] && $row['isuserActive'] == 1){
     if($row['isAdmin'] == 1) {
         echo "Admin";
-    } else if ($row['isAdmin'] == 0) {
+    } else if ($row['isAdmin'] == 0 && $row['isuserDriver'] == 0) {
         echo "User";
-    } else if ($row['isuserDriver'] == 1) {
+    } else if ($row['isAdmin'] == 0 && $row['isuserDriver'] == 1) {
         echo "UserDriver";   
     }
 }

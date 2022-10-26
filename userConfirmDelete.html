@@ -37,6 +37,9 @@
                       <a class="nav-link" href="previousRides.html" >Ride History<span class="sr-only">(current)</span></a>
                 
               </li>
+              <li class="nav-item" id="postARide">
+               <a class="nav-link" href="postRideUser.html">Post A Ride</a>
+             </li>
               <li class="nav-item"> 
                 <a class="nav-link " href="aboutUs.html">About Us</a>
               </li>
@@ -100,6 +103,13 @@
     console.log(userLoggedIn);
     if(userLoggedIn === "" || !userLoggedIn) {
       window.location.href = "index.html";
+    }
+    
+    $('#postARide').hide();           
+    var isDriver = window.sessionStorage.getItem('isDriver');
+    console.log(isDriver);
+    if(isDriver === "true") {
+      $('#postARide').show();
     }
     
 function getUrlVars() {
