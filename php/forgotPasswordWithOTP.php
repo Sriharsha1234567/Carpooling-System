@@ -36,6 +36,7 @@ if($email != "") {
 if ($result->num_rows > 0) {
 $fetch_user_name=$row['email'];
 if($email==$fetch_user_name) {
+
 // Create an instance; Pass `true` to enable exceptions 
 $mail = new PHPMailer(TRUE); 
  
@@ -46,14 +47,6 @@ $mail->Host = 'smtp.gmail.com';           // Specify main and backup SMTP server
 $mail->SMTPAuth = true;                     // Enable SMTP authentication 
 $mail->Username = 'carpooling.nwmsu@gmail.com';       // SMTP username 
 $mail->Password = 'yebhomkyliwpaupe';         // SMTP password 
-$mail->SMTPSecure = 'tls';                  // Enable TLS encryption, `ssl` also accepted 
-$mail->Port = 587;                         // TCP port to connect to 
- 
-// Sender info 
-$mail->setFrom('carpooling.nwmsu@gmail.com', 'Password Team'); 
- 
-// Add a recipient 
-$mail->addAddress($email); 
  
 //$mail->addCC('cc@example.com'); 
 //$mail->addBCC('bcc@example.com'); 
@@ -75,6 +68,8 @@ if(!$mail->send()) {
 } else { 
     echo 'Message has been sent.'; 
 }
+
+
 } 
 }else {
   echo "0";
@@ -82,6 +77,7 @@ if(!$mail->send()) {
 } 
 else{
   echo "0";
+
 }
 
 mysqli_close($conn);
