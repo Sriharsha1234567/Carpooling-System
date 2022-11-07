@@ -182,10 +182,10 @@
         url:"registerUser.php",
         success:function(output){
             console.log(output)
+            alert("User Registered Succesfully");
+            window.location.href = "index.html";
         }
         });
-        alert("User Registered Succesfully");
-        window.location.href = "index.html";
         }
         else{
         alert("Please fill all the fields");

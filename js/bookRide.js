@@ -29,11 +29,10 @@ function init() {
           }
       }
       var userId = window.sessionStorage.getItem("userID");
-      console.log(userId);
+      console.log("Inside book Ride",userId);
       for (i = 0; i < response.length; i++) {
-        //console.log(response[i]); 
         var d1 = new Date(response[i].journeyDate);
-        if((d.getDate()<=d1.getDate()) && response[i].availableSeats>0 && response[i].driverEmail != userId){
+        if((d.getTime()<=d1.getTime()) && response[i].availableSeats>0 && response[i].driverEmail != userId){
         dataClick.push(response[i].id);
         updatedRide.push(response[i])
         tempList +=  '<div class="card col-md-3" >'+ '<img class="card-img-top" src="'+image[i]+'"  alt="Card image cap">'+

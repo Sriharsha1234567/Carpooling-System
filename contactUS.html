@@ -48,11 +48,17 @@
                       <a class="nav-link " href="previousRides.html">Ride History</a>
                 
               </li>
+              <li class="nav-item" id="postARide">
+                <a class="nav-link" href="postRideUser.html">Post A Ride</a>
+              </li>
               <li class="nav-item">
                 <a class="nav-link " href="aboutUs.html">About Us</a>
               </li>
               <li class="nav-item active">
                 <a class="nav-link " href="contactUS.html">Contact Us<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link " href="ChatApp/login.php">Chat</a>
               </li>
             </ul>
             <a href="index.html"><span class="navbar-text">Signout</span> </a>
@@ -196,6 +202,13 @@
       window.location.href = "index.html";
     }
     
+    $('#postARide').hide();
+    var isDriver = window.sessionStorage.getItem('isDriver');
+    console.log("Is Driver",isDriver);
+    if(isDriver === "true") {
+      $('#postARide').show();
+    }
+
                       $('#contactSuccessInfo').hide();
                       $('#submit').click(function(){
                         $('#contactInfo').hide();

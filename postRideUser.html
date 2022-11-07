@@ -20,36 +20,41 @@
       
    </head>
    <body>
-        <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="userHome.html">Car Pooling System</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-                </button>
-              
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                          <a class="nav-link" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="bookRide.html">Book Your Ride</a>
-                        </li>
-                        <li class="nav-item">
-                                <a class="nav-link " href="previousRides.html">Ride History</a>
-                        </li>
-                        <li class="nav-item" id="postARide">
-                          <a class="nav-link" href="postRideUser.html">Post A Ride<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link " href="aboutUs.html">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link " href="contactUS.html">Contact Us</a>
-                        </li>
-                    </ul>
-                  <a href="index.html"><span class="navbar-text">Signout</span> </a>
-                </div>
-              </nav>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="userHome.html">Car Pooling System</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="userHome.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="bookRide.html">Book Your Ride</a>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link " href="previousRides.html">Ride History</a>
+                </li>
+                <li class="nav-item active" id="postARide">
+                  <a class="nav-link" href="postRideUser.html">Post A Ride<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="aboutUs.html">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="contactUS.html">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="ChatApp/login.php">Chat</a>
+                </li>
+            </ul>
+          <a href="index.html"><span class="navbar-text">Signout</span> </a>
+        </div>
+      </nav>
+
               <div id="booking" class="section">
                     <div class="section-center">
                         <div class="container">
@@ -301,6 +306,8 @@ $('#fromWarning').hide();
                                     $field.removeClass('input-not-empty');
                                 }
                             }
+</script>
+<script>
 
                             $('#bookButton').click(function(){
                             var from = $('#from').val();
@@ -313,19 +320,6 @@ $('#fromWarning').hide();
                             var journeyDate = $('#journeyDate').val();
                             var driverName = $('#driverName').val();
                             var contactNumber = $('#contactNumber').val();
-                            
-                            if(contactNumber != "" ){
-                            $.ajax({
-                            type: "POST",
-                            data:{email:contactNumber},
-                            url: "checkUserByID.php",
-                            success: function(response) {
-                            if(response==0 || response == "Admin"){
-                            alert("Invalid Driver Email. Please check correctly");
-                            }
-                            }
-                            });
-                            }
 
                             if(from != "" && to!= "" && carType!= "" && seats!= "" && departureTime!= "" && arrivalTime!= "" &&
                             price!="" && journeyDate!= "" && driverName!="" && contactNumber!=""){ 

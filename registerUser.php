@@ -11,16 +11,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-
-if($_REQUEST['name']){
-$name = $_REQUEST['name'];
-$password = $_REQUEST['password'];
-$email = $_REQUEST['email'];
-$contact = $_REQUEST['contact'];
-$city = $_REQUEST['city'];
-}
-
-// Import PHPMailer classes into the global namespace 
+//Import PHPMailer classes into the global namespace 
 use PHPMailer\PHPMailer\PHPMailer; 
 use PHPMailer\PHPMailer\SMTP; 
 use PHPMailer\PHPMailer\Exception; 
@@ -30,7 +21,38 @@ require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\Exception.php';
 require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\PHPMailer.php';
 require 'C:\xampp2\htdocs\PHPMailer\PHPMailer\src\SMTP.php';
 
-$sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isuserActive)VALUES('$name','$password','$email','$contact','$city',0)";
+function getIfSet(&$value, $default = null)
+{
+    return isset($value) ? $value : $default;
+}
+
+$checkName = getIfSet($_REQUEST['name']);
+$checkDashboardEmail = getIfSet($_REQUEST['dashboardEmail']);
+
+if($checkName != null){
+$name = $_REQUEST['name'];
+$password = $_REQUEST['password'];
+$email = $_REQUEST['email'];
+$contact = $_REQUEST['contact'];
+$city = $_REQUEST['city'];
+$isUserActive = '0';
+$isAdmin = '0';
+$isuserDriver = '0';
+}
+
+if($checkDashboardEmail != null){
+    echo "Inside Dashboard Flow";
+    $name = $_REQUEST['dashboardName'];
+    $email = $_REQUEST['dashboardEmail'];
+    $password = $_REQUEST['password'];
+    $contact = $_REQUEST['contact'];
+    $city = $_REQUEST['city'];
+    $isUserActive = $_REQUEST['isuserActive'];
+    $isAdmin = $_REQUEST['isAdmin'];
+    $isuserDriver = $_REQUEST['isuserDriver'];
+}
+
+$sql = "INSERT INTO userlogin(`name`,`password`,email,contact,city,isuserActive,isAdmin,isuserDriver)VALUES('$name','$password','$email','$contact','$city',$isUserActive,$isAdmin,$isuserDriver)";
 
 if($conn->query($sql) == TRUE){
 // Create an instance; Pass `true` to enable exceptions 
@@ -66,8 +88,13 @@ $mail->Subject = 'Welcome To Our Application';
 // Mail body content 
 $bodyContent = '<h1>Hello <b>'.$name.'</b>. You have successfuly registered with the below Email address to our portal</h1>'; 
 $bodyContent .= '<p>Your Email is: <b>'.$email.'</b></p>';
-$bodyContent .= '<p>Someone from our team would review your application and get back to you shortly. </p>';  
-$mail->Body    = $bodyContent; 
+if($checkName != null){
+$bodyContent .= '<p>Someone from our Admin team will review your application and get back to you shortly. </p>';  
+} else {
+$bodyContent .= '<p>You can login with your registered email address and with the below temporary password.</p>';   
+$bodyContent .= '<p>Your temporary password <b>'.$password.'</b></p>';  
+}
+$mail->Body    = $bodyContent;
  
 // Send email 
 if(!$mail->send()) { 

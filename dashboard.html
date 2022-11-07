@@ -42,6 +42,9 @@
                     <li class="nav-item active">
                       <a class="nav-link " href="dashboard.html">Dashboard <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="ChatApp/login.php">Chat</a>
+                    </li>
                   </ul>
                   <a href="index.html"><span class="navbar-text">Signout</span> </a>
                 </div>
@@ -91,31 +94,31 @@
                                 <div class="modal-body">					
                                     <div class="form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" id="name" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>Email</label>
-                                        <input type="email" class="form-control" required>
+                                        <input type="email" id="email" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>State</label>
-                                        <input class="form-control" required></input>
+                                        <input class="form-control" id="state" required></input>
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="tel" class="form-control" id="phone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required>
                                     </div>
                                     <div class="form-group">
                                         <label>isAdmin</label>
-                                        <input type="number" class="form-control" min="0" max="1" required>
+                                        <input type="number" class="form-control" id="admin" value = "0" min="0" max="1" required>
                                     </div>
                                     <div class="form-group">
                                         <label>isUserActive</label>
-                                        <input type="number" class="form-control" min="0" max="1" required>
+                                        <input type="number" class="form-control" id="isUserActive" value = "1" min="0" max="1" required>
                                     </div>
                                     <div class="form-group">
                                         <label>isUserDriver</label>
-                                        <input type="number" class="form-control" min="0" max="1" required>
+                                        <input type="number" class="form-control" id="isUserDriver"  value = "0" min="0" max="1" required>
                                     </div>					
                                 </div>
                                 <h6 class = "text-warning">Note:- 0 indicates inactive and 1 indicates active state.</h6>
@@ -151,7 +154,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Phone</label>
-                                        <input type="text" id="editPhone" class="form-control" required>
+                                        <input type="tel" id="editPhone" placeholder="123-456-6789" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" required>
                                     </div>
                                     <div class="form-group">
                                         <label>isAdmin</label>
@@ -289,6 +292,42 @@ $('#editUser').click(function(){
     }   
 });
 
+//used to generate the random value
+function generateRandonPassword(length) {
+   var result           = '';
+   var characters       = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@!#$%^&*()_+{}:><?';
+   var charactersLength = characters.length;
+   for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+   }
+   return result;
+}
+
+$('#createUser').click(function(){
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var state = document.getElementById("state").value;
+    var phone = document.getElementById("phone").value;
+    var admin = document.getElementById("admin").value;
+    var user = document.getElementById("isUserActive").value;
+    var driver = document.getElementById("isUserDriver").value;
+    var password = generateRandonPassword(8); 
+
+    if (!name || !email || !state || !phone) {
+    console.log("Empty Fields")
+    } else {
+    $.ajax({
+    type: "POST",
+    data:{dashboardEmail:email,dashboardName:name,password:password,contact:phone,city:state,isAdmin:admin,isuserActive:user,isuserDriver:driver},
+    url: "registerUser.php",
+    success: function(response) {
+        console.log(response)
+        location.reload();
+    }
+    });
+    }
+});
+
 </script>
 
 <script type="text/javascript">
@@ -327,11 +366,6 @@ $('#userTableDetails').html(tempList);
     }
 });
 
-// $('#editEmployeeModal').on('click', function(e){
-// var id = $(e.target).closest('tr').find(".id").html();
-// console.log("Getting the row ID",id)
-// });
-
 $("#deleteTheUser").click(function(){
     var deleteUserEmail = document.getElementById("deleteUserID").innerHTML;
     alert(deleteUserEmail);
@@ -369,6 +403,6 @@ $("#deleteTheUser").click(function(){
                         }
                     });
                 });
-                </script>
+</script>
        </body>
 </html>

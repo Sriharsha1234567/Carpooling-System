@@ -48,6 +48,9 @@
                     <li class="nav-item">
                       <a class="nav-link " href="contactUS.html">Contact Us</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link " href="ChatApp/login.php">Chat</a>
+                    </li>
                   </ul>
                   <a href="index.html"><span class="navbar-text">Logout</span> </a>
                 </div>
@@ -165,7 +168,7 @@
                <script>
     $('#postARide').hide();           
     var isDriver = window.sessionStorage.getItem('isDriver');
-    console.log(isDriver);
+    console.log("Is Driver",isDriver);
     if(isDriver === "true") {
       $('#postARide').show();
     }

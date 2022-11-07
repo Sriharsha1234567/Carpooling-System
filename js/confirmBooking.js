@@ -44,7 +44,7 @@ function init() {
             '</div>' + '</div>';
             
             var selectList = ''
-            for (var x = 1; x <= result.availableSeats; x++) {
+            for (var x = 0; x <= result.availableSeats; x++) {
                 selectList += '<option>' + x + '</option>';
             }
             
@@ -77,6 +77,9 @@ function init() {
             var bookedRideDetails = []
             $('#onConfirm').click(function(){
             
+            if($('#selectNoOfSeats').val() <= 0) {
+              alert("Select atleat one seat")
+            } else {
             console.log("inside the confirm button");
             bookedRideDetails.push({bookedCarType:result.carType,bookedFrom:result.from,bookedTo:result.to,bookedCarImage:image[0],
             bookedTotalPrice:totalPrice,seats:result.availableSeats,bookedTotalSeats:$('#selectNoOfSeats').val(),bookedDriverContactNumber:result.driverEmail,
@@ -94,6 +97,7 @@ function init() {
               window.location.href = "bookingSuccess.html";
               }
             });
+            }
             });
         }
 });
