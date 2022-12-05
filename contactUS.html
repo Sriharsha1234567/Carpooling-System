@@ -31,7 +31,7 @@
    </head>
    <body>
       <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
-          <a class="navbar-brand" href="userHome.html">Maryville Car Pool</a>
+          <a class="navbar-brand" href="userHome.html">Car Pooling System</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -78,7 +78,7 @@
                                          <form>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                  <input id="Full Name" name="Full Name" placeholder="Full Name" class="form-control" type="text">
+                                                  <input id="fullName" name="Full Name" placeholder="Full Name" class="form-control" type="text">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                   <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
@@ -86,7 +86,7 @@
                                               </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <input id="Mobile No." name="Mobile No." placeholder="Mobile No." class="form-control" required="required" type="text">
+                                                    <input id="mobileNumber" name="Mobile No." placeholder="Mobile No." class="form-control" required="required" type="text">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                           
@@ -143,7 +143,7 @@
                                     <div class="email">
                                     <h5>Mailto:</h5>
                                     <ul class="list-unstyled">
-                                        <li>projectTeam@gmail.com</li>
+                                        <li>carpooling.nwmsu@gmail.com</li>
                                         
                                     </ul>
                                     </div>
@@ -180,13 +180,13 @@
                               </div>
                               <div class="col-sm-3 info">
                                  <h5>Information</h5>
-                                 <p>Maryville Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
+                                 <p>Car Pooling System provides various rides to different locations in Kansas and Missouri State with numerous car range types.</p>
                               </div>
                            </div>
                         </div>
                         <div class="second-bar">
                            <div class="container">
-                              <h2 class="logo"><a href="#"> Maryville Car Pool</a></h2>
+                              <h2 class="logo"><a href="#">Car Pooling System</a></h2>
                               <div class="social-icons">
                                  <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                                  <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -211,7 +211,30 @@
 
                       $('#contactSuccessInfo').hide();
                       $('#submit').click(function(){
-                        $('#contactInfo').hide();
+                        var fullName = $('#fullName').val();
+                        var email = $('#inputEmail4').val();
+                        var mobileNumber = $('#mobileNumber').val();
+                        var inputState = $('#inputState').val();
+                        var comment = $('#comment').val();
+
+                        console.log(email);
+                        if(fullName != "" && email!= "" && mobileNumber!= "" && inputState!= "" && comment!= ""){ 
+                                $.ajax({
+                                type:'POST',
+                                data:{fullName:fullName,email:email,mobileNumber:mobileNumber,inputState:inputState,comment:comment},
+                                url:"contactUS.php",
+                                success:function(output){
+                                    if (output ==0) {
+                                        alert("Invalid Credentials");
+                                    } else {
+                                    alert("Your request has been posted sucessfully.");
+                                    }
+                                }
+                                });
+                            } else {
+                                alert("Incorrect Data. Please fill all fields correctly")
+                            }
+                            $('#contactInfo').hide();
                         $('#contactSuccessInfo').show();
                       });
                       $('#submitAgain').click(function(){

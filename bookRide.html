@@ -84,7 +84,7 @@
                 </div>
                 <div class="second-bar">
                    <div class="container">
-                      <h2 class="logo"><a href="#"> Car Pooling System</a></h2>
+                      <h2 class="logo"><a href="#">Car Pooling System</a></h2>
                       <div class="social-icons">
                          <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
                          <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
@@ -146,7 +146,7 @@ var rideDetails = JSON.parse(window.sessionStorage.getItem("RideDetails"));
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < rideDetails.length; i++) {
    console.log(rideDetails[i].from.toUpperCase());
-   if ((rideDetails[i].from.toUpperCase().search(filter) > -1) || (rideDetails[i].carType.toUpperCase().search(filter) > -1)) {
+   if ((rideDetails[i].from.toUpperCase().search(filter) > -1) || (rideDetails[i].carType.toUpperCase().search(filter) > -1) || (rideDetails[i].journeyDate.search(filter) > -1)) {
       searchList +=  '<div class="card col-md-3" >'+ '<img class="card-img-top" src="'+image[i]+'"  alt="Card image cap">'+
         '<div class="card-body">'+
           '<h5 class="card-title">'+rideDetails[i].carType+'</h5>'+
